@@ -13,8 +13,8 @@ class True_false_test < Minitest::Test
   end
 
   def test_to_s_display_correct
-    q = MultipleChoice.new("Oslo är norges huvudstad", "true", "hint")
-    assert_equal q.to_s, "huvudstad i Norde? (true)"
+    q = TrueFalse.new("Oslo är norges huvudstad", "true", "hint")
+    assert_equal q.to_s, "Oslo är norges huvudstad (true)"
 
   end
 
@@ -26,7 +26,7 @@ class True_false_test < Minitest::Test
 
   def test_hint_display_correct
     q = TrueFalse.new("question", "true", "en bra hint")
-    assert_equal q.hint, "en_bra_hint"
+    assert_equal q.hint, "en bra hint"
   end
 
 end
