@@ -12,31 +12,37 @@ require_relative "../multiple_choice"
 class Multiple_choice_test < Minitest::Test
 
   def test_hint_is_first_letter_of_answer
-    q = MultipleChoice.new("huvudstad i norge?", "Oslo", ["Oslo", "Annat"])
+    q = MultipleChoice.new("huvudstad i norge?", ["Oslo", "Annat"], "Oslo")
     assert_equal "O", q.hint
   end
 
   def test_hint_for_another_question
-    q = MultipleChoice.new("Vad heter huvudstaden i Sverige?", "Stockholm", ["Oslo", "Stockholm"])
+    q = MultipleChoice.new("Vad heter huvudstaden i Sverige?", ["Oslo", "Stockholm"], "Stockholm")
     assert_equal "S", q.hint
   end
 
   def test_correct_ignore_case
-    q = MultipleChoice.new("Vad heter huvudstaden i Norge?", "Oslo", ["Oslo", "Annat"])
+    q = MultipleChoice.new("Vad heter huvudstaden i Norge?", ["Oslo", "Annat"], "Oslo")
     assert q.correct?("1")
     refute q.correct?("2")
   end
 
   def test_refuses_empty_prompt
-    assert_raises(ArgumentError) { MultipleChoice.new("", "Oslo", ["some", "alts"]) }
+    assert_raises(ArgumentError) { MultipleChoice.new("", ["some", "alts"], "Oslo") }
   end
 
   def test_refuses_empty_answer
-    assert_raises(ArgumentError) { MultipleChoice.new("prompts", "", ["", "alts"]) }
+    assert_raises(ArgumentError) { MultipleChoice.new("prompts", ["", "alts"], "") }
   end
 
   def test_refuses_answer_not_in_alternatives
-    assert_raises(ArgumentError) { MultipleChoice.new("prompts", "ans", ["not_ans", "other"]) }
+    assert_raises(ArgumentError) { MultipleChoice.new("prompts", ["not_ans", "other"], "ans") }
+  end
+
+  def test_to_s_display_correct
+    q = MultipleChoice.new("huvudstad i Norde?", ["Boslo", "some other"], "Boslo")
+    assert_equal q.to_s, "huvudstad i Norde? (Boslo) [\"Boslo\", \"some other\"]"
+
   end
 
 end

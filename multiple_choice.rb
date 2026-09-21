@@ -1,19 +1,14 @@
+require_relative "question"
 
-class MultipleChoice
-  attr_reader :prompt, :answer, :alternativs
 
-  def initialize(prompt, answer, alternativs)
-    raise(ArgumentError, "prompt must not be empty") if prompt.empty?
-    raise(ArgumentError, "answer must not be empty") if answer.empty?
+class MultipleChoice < Question
+  attr_reader :alternativs
+
+  def initialize(prompt, alternativs, answer)
+    super(prompt, answer)
     raise(ArgumentError, "alternativs must contain answer") unless alternativs.include?(answer)
-    
-    @prompt = prompt
-    @answer = answer
-    @alternativs = alternativs
-  end
 
-  def hint
-    answer[0]
+    @alternativs = alternativs
   end
 
   def correct?(reply)
@@ -27,6 +22,10 @@ class MultipleChoice
       puts "#{index}: #{alternative}"
     end
     gets.chomp
+  end
+
+  def to_s
+    "#{super} #{alternativs}"
   end
   
 end
