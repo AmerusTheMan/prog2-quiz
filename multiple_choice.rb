@@ -19,7 +19,7 @@ class MultipleChoice < Question
   def ask
     puts prompt
     alternativs.each_with_index do |alternative, index|
-      puts "#{index}: #{alternative}"
+      puts "#{index+1}: #{alternative}"
     end
     gets.chomp
   end
