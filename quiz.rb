@@ -1,4 +1,7 @@
 require_relative "question"
+require_relative "multiple_choice"
+require_relative "numeric_question"
+
 
 class Quiz
   
@@ -14,7 +17,7 @@ class Quiz
     points = 0
     @questions.each do |question|
       user_input = question.ask
-      if user_input == question.answer
+      if question.correct?(user_input)
         puts "Rätt"
         points += 1
         next
@@ -23,7 +26,7 @@ class Quiz
         next unless @allow_hint
 
         puts "Hint: Första bokstaven är #{question.hint}"
-        if user_input == question.answer
+        if question.correct?(user_input)
           points += 0.5
         else
           puts "Fel"
@@ -39,11 +42,9 @@ end
 
 
 quiz = Quiz.new([
-  Question.new("1", "1"),
-  Question.new("1", "1"),
-  Question.new("1", "1"),
-  Question.new("1", "1"),
-  Question.new("1", "1")
-], allow_hint=true)
+  Question.new("vad heter jag?", "johannes"),
+  MultipleChoice.new("var bor jag?", ["tuve", "oslo", "danmark"], "tuve"),
+  NumericQuestion.new("hur gammal är jag?", 18)
+], allow_hint=false)
 
 quiz.run()
