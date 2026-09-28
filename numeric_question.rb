@@ -19,5 +19,10 @@ class NumericQuestion
     (answer - input).abs <= @answer_tolerance
   end
 
+  def ask
+    puts prompt
+    gets.chomp
+  end
+
 
 end
