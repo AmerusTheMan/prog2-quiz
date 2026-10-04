@@ -11,7 +11,7 @@ class Question
 
 
   def hint
-    answer[0]
+    "Svaret börjar på #{answer[0]}"
   end
 
   def ask
