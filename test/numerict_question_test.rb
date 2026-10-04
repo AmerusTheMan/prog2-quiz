@@ -23,4 +23,9 @@ class NumericQuestionTest < Minitest::Test
     q = NumericQuestion.new("Vad är 0,1 + 0,2?", 0.1 + 0.2)
     assert q.correct?("0.3")
   end
+
+  def test_question_has_hint
+    q = NumericQuestion.new("Vad är 0,1 + 0,2?", 0.1 + 0.2)
+    q.hint
+  end
 end
