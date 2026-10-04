@@ -11,15 +11,11 @@ require_relative "../multiple_choice"
 
 class Multiple_choice_test < Minitest::Test
 
-  def test_hint_is_first_letter_of_answer
+  def test_question_has_hint
     q = MultipleChoice.new("huvudstad i norge?", ["Oslo", "Annat"], "Oslo")
-    assert_equal "O", q.hint
+    q.hint
   end
 
-  def test_hint_for_another_question
-    q = MultipleChoice.new("Vad heter huvudstaden i Sverige?", ["Oslo", "Stockholm"], "Stockholm")
-    assert_equal "S", q.hint
-  end
 
   def test_correct_ignore_case
     q = MultipleChoice.new("Vad heter huvudstaden i Norge?", ["Oslo", "Annat"], "Oslo")

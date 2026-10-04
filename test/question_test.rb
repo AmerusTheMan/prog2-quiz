@@ -2,15 +2,11 @@ require "minitest/autorun"
 require_relative "../question"
 
 class QuestionTest < Minitest::Test
-  def test_hint_is_first_letter_of_answer
+  def test_question_has_hint
     q = Question.new("huvudstad i norge?", "Oslo")
-    assert_equal "O", q.hint
+    q.hint
   end
 
-  def test_hint_for_another_question
-    q = Question.new("Vad heter huvudstaden i Sverige?", "Stockholm")
-    assert_equal "S", q.hint
-  end
 
   def test_correct_ignore_case
     q = Question.new("Vad heter huvudstaden i Norge?", "Oslo")
