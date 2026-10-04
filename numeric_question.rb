@@ -12,7 +12,9 @@ class NumericQuestion
     @answer_tolerance = 0.01
   end
 
-
+  def hint
+    "Svaret är mellan #{answer-10} och #{answer+10}"
+  end
 
   def correct?(input)
     input = input.gsub(",", ".").to_f

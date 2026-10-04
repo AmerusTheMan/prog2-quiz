@@ -10,6 +10,9 @@ class SelfGraded
     @answer = answer
   end
 
+  def hint
+    "Här får du ingen ledtråd"
+  end
 
   def ask
     puts prompt
