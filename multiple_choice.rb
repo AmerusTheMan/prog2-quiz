@@ -12,8 +12,8 @@ class MultipleChoice < Question
   end
 
   def correct?(reply)
-    reply = reply.to_i if reply.class != Integer
-    alternativs[reply-1] == answer
+    reply_int = reply.to_i if reply.class != Integer
+    alternativs[reply_int-1] == answer or reply == answer
   end
 
   def ask
