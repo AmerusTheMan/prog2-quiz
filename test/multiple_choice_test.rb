@@ -3,11 +3,7 @@ require_relative "../multiple_choice"
 
 
 # TODO
-# >  DONE MultipleChoice.new(prompt, alternatives, answer). alternatives är en lista med strängar. answer är en av dem.
-# >  DONE ask skriver ut frågan och alternativen numrerade från 1, och läser ett svar.
-# >  DONE correct?(reply) svarar true om siffran i reply pekar på rätt alternativ. reply.to_i gör "2" till 2.
-# >  DONE Samma regler som för Question: tom text säger nej. Dessutom: answer måste finnas bland alternativen, annars ArgumentError.
-# >  DONE prompt, answer och alternatives går att läsa. Inget går att ändra utifrån.
+# > create test for correct? returns true if replay is answer and not just index
 
 class Multiple_choice_test < Minitest::Test
 
