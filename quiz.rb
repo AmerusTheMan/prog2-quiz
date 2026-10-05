@@ -33,7 +33,7 @@ class Quiz
       correct = question.correct?(user_in)
       if correct
         puts "RÄTT!"
-        score += hint_displayed ? 1 : 0.5
+        score += hint_displayed ? 0.5 : 1
 
       elsif allow_hint and not hint_displayed
         puts "FEL!"
@@ -44,11 +44,10 @@ class Quiz
       else
         puts "FEL!"
       end
-
       hint_displayed = false
     end
 
-    puts "Du fick #{score}/#{max_score} poäng"
+    score
   end
 end
 

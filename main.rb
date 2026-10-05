@@ -11,4 +11,6 @@ quiz = Quiz.new([
   SelfGraded.new("Hur tar man sig hem till mig?", "På lite olika sätt")
 ], allow_hint=true)
 
-quiz.run()
+result = quiz.run()
+
+puts "Du fick #{result}/#{quiz.max_score} poäng"
