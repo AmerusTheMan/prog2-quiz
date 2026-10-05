@@ -5,15 +5,19 @@ require_relative "self_graded"
 
 
 class Quiz
-  attr_reader :length, :max_score, :questions, :allow_hint
+  attr_reader :questions, :allow_hint
 
-  def initialize(questions, allow_hint=false)
+  def initialize(questions = [], allow_hint=false)
     raise ArgumentError, "questions must be a list" unless questions.class == Array
     @questions = questions
     @allow_hint = allow_hint
 
-    @length = questions.length
-    @max_score = @length
+  end
+  
+  def max_score = questions.length 
+
+  def add(question)
+    questions << question
   end
 
   def display_hint(question)
